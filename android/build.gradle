@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-	compileSdkVersion 28
+	compileSdkVersion 29
 	sourceSets {
 		main {
 			manifest.srcFile 'AndroidManifest.xml'
-			java.srcDirs = ['src/main/java']
-			aidl.srcDirs = ['src/main/java']
-			renderscript.srcDirs = ['src/main/java']
+			java.srcDirs = ['src/main/java', 'src/main/kotlin']
+			aidl.srcDirs = ['src/main/java', 'src/main/kotlin']
+			renderscript.srcDirs = ['src/main/java', 'src/main/kotlin']
 			res.srcDirs = ['res']
 			assets.srcDirs = ['../assets']
 			jniLibs.srcDirs = ['libs']
@@ -32,9 +32,10 @@ android {
 	defaultConfig {
 		applicationId 'ru.maximus.blank'
 		minSdkVersion 14
-		targetSdkVersion 28
+		targetSdkVersion 29
 		versionCode 1
 		versionName "1.0"
+		multiDexEnabled true
 	}
 }
 
@@ -50,6 +51,7 @@ dependencies {
 	api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
 	api "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
 	api "de.tomgrill.gdxdialogs:gdx-dialogs-android:$dialogsVersion"
+	implementation 'com.android.support:multidex:1.0.3'
 
 	natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
 	natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
